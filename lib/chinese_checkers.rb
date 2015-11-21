@@ -1,0 +1,2 @@
+module ChineseCheckers
+end
