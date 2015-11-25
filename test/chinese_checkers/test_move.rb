@@ -3,7 +3,7 @@ require 'chinese_checkers/move'
 require 'chinese_checkers/piece'
 
 module ChineseCheckers
-  class MoveTest < Minitest::Test
+  class TestMove < Minitest::Test
     def test_it_is_valid_if_space_is_available_and_validator_aproves_it
       left_move = Move.new(
         piece: Piece.new(x: 3, y: 4),
