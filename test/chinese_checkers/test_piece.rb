@@ -11,9 +11,11 @@ module ChineseCheckers
       assert_equal :red, piece.color
     end
 
-    def test_it_can_be_created_with_no_color
-      piece = Piece.new(x: 4, y: 7)
+    def test_it_can_be_created_with_no_color_and_position
+      piece = Piece.new
 
+      assert_equal nil, piece.x
+      assert_equal nil, piece.y
       assert_equal nil, piece.color
     end
 
