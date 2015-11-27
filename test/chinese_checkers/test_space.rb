@@ -30,22 +30,36 @@ module ChineseCheckers
     def test_put_stores_a_piece
       a_piece = "a piece"
       space = Space.new(x: 4, y: 7)
+
       space.put a_piece
+
       assert_equal a_piece, space.piece
     end
 
     def test_remove_returns_the_piece
       a_piece = "a piece"
       space = Space.new(x: 4, y: 7)
+
       space.put a_piece
+
       assert_equal a_piece, space.remove_piece
     end
 
     def test_remove_removes_the_piece
       a_piece = "a piece"
       space = Space.new(x: 4, y: 7, piece: a_piece)
+
       space.remove_piece
+
       assert_equal nil, space.piece
+    end
+
+    def test_it_is_available_when_it_has_no_piece
+      assert Space.new(x: 4, y: 7).available?
+    end
+
+    def test_it_is_not_available_when_it_has_a_piece
+      refute Space.new(x: 4, y: 7, piece: "a piece").available?
     end
   end
 end

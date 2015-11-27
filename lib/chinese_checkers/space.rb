@@ -16,5 +16,9 @@ module ChineseCheckers
     def remove_piece
       @piece.tap{ @piece = nil }
     end
+
+    def available?
+      !@piece
+    end
   end
 end
