@@ -1,11 +1,10 @@
 module ChineseCheckers
   class Piece
-    attr_accessor :x, :y, :color
+    attr_accessor :color, :space
 
-    def initialize(x: nil, y: nil, color: nil)
-     @x = x
-     @y = y
-     @color = color
+    def initialize(color: nil, space: nil)
+      @space = space
+      @color = color
     end
   end
 end
