@@ -61,5 +61,26 @@ module ChineseCheckers
     def test_it_is_not_available_when_it_has_a_piece
       refute Space.new(x: 4, y: 7, piece: "a piece").available?
     end
+
+    def test_it_is_on_the_left_if_x_position_is_two_spaces_on_the_left_and_y_position_is_the_same
+      space_1 = Space.new(x: 4, y: 7)
+      space_2 = Space.new(x: 2, y: 7)
+
+      assert space_2.left?(space_1)
+    end
+
+    def test_it_is_not_on_the_left_if_x_position_is_two_spaces_on_the_left_but_y_position_is_not_the_same
+      space_1 = Space.new(x: 4, y: 7)
+      space_2 = Space.new(x: 2, y: 6)
+
+      refute space_2.left?(space_1)
+    end
+
+    def test_it_is_not_on_the_left_if_x_position_is_not_two_spaces_on_the_left_but_y_position_is_the_same
+      space_1 = Space.new(x: 4, y: 7)
+      space_2 = Space.new(x: 9, y: 7)
+
+      refute space_2.left?(space_1)
+    end
   end
 end

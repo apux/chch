@@ -20,5 +20,9 @@ module ChineseCheckers
     def available?
       !@piece
     end
+
+    def left?(other_space)
+      x == other_space.x - 2 and y == other_space.y
+    end
   end
 end
