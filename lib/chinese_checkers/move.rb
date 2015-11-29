@@ -1,8 +1,8 @@
 module ChineseCheckers
   class Move
-    def initialize(piece:, space:, validator:)
-      @piece = piece
-      @space = space
+    def initialize(from:, to:, validator:)
+      @from = from
+      @to = to
       @validator = validator
     end
 
@@ -13,12 +13,12 @@ module ChineseCheckers
   private
 
     def valid?
-      @validator.valid?(@piece, @space)
+      @validator.valid?(@from, @to)
     end
 
     def update_piece_position
-      @piece.x = @space.x
-      @piece.y = @space.y
+      @from.x = @to.x
+      @from.y = @to.y
     end
   end
 end
