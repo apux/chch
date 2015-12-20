@@ -55,32 +55,32 @@ module ChineseCheckers
     end
 
     def test_it_is_available_when_it_has_no_piece
-      assert Space.new(x: 4, y: 7).available?
+      assert Space.new(x: 4, y: 7).available?, "available? is false when it has no piece"
     end
 
     def test_it_is_not_available_when_it_has_a_piece
-      refute Space.new(x: 4, y: 7, piece: "a piece").available?
+      refute Space.new(x: 4, y: 7, piece: "a piece").available?, "available? is true when it has a piece"
     end
 
     def test_it_is_on_the_left_if_x_position_is_two_spaces_on_the_left_and_y_position_is_the_same
       space_1 = Space.new(x: 4, y: 7)
       space_2 = Space.new(x: 2, y: 7)
 
-      assert space_2.left?(space_1)
+      assert space_2.left?(space_1), "left? is false when the other space is two positions on the left"
     end
 
     def test_it_is_not_on_the_left_if_x_position_is_two_spaces_on_the_left_but_y_position_is_not_the_same
       space_1 = Space.new(x: 4, y: 7)
       space_2 = Space.new(x: 2, y: 6)
 
-      refute space_2.left?(space_1)
+      refute space_2.left?(space_1), "left? is true when the other space is not on the same y position"
     end
 
     def test_it_is_not_on_the_left_if_x_position_is_not_two_spaces_on_the_left_but_y_position_is_the_same
       space_1 = Space.new(x: 4, y: 7)
       space_2 = Space.new(x: 9, y: 7)
 
-      refute space_2.left?(space_1)
+      refute space_2.left?(space_1), "left? is true when the other space is not two positions on the left"
     end
   end
 end
