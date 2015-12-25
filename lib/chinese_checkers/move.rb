@@ -1,13 +1,13 @@
 module ChineseCheckers
   class Move
     def initialize(from:, to:, validator:)
-      @from = from
-      @to = to
+      @from      = from
+      @to        = to
       @validator = validator
     end
 
     def perform
-      valid? ? (update_piece_position and true) : false
+      valid? ? move_piece : false
     end
 
   private
@@ -16,9 +16,9 @@ module ChineseCheckers
       @validator.valid?(@from, @to)
     end
 
-    def update_piece_position
-      @from.x = @to.x
-      @from.y = @to.y
+    def move_piece
+      @to.put @from.remove_piece
+      true
     end
   end
 end
