@@ -18,15 +18,6 @@ module ChineseCheckers
       assert_equal nil, space.piece
     end
 
-    def test_it_allows_to_modify_x_and_y
-      space = Space.new(x: 4, y: 7)
-      space.x = 5
-      space.y = 1
-
-      assert_equal 5, space.x
-      assert_equal 1, space.y
-    end
-
     def test_put_stores_a_piece
       a_piece = "a piece"
       space = Space.new(x: 4, y: 7)

@@ -1,6 +1,6 @@
 module ChineseCheckers
   class Space
-    attr_accessor :x, :y
+    attr_reader :x, :y
     attr_reader :piece
 
     def initialize(x:, y:, piece: nil)
@@ -14,7 +14,9 @@ module ChineseCheckers
     end
 
     def remove_piece
-      @piece.tap{ @piece = nil }
+      aux = @piece
+      @piece = nil
+      aux
     end
 
     def available?
