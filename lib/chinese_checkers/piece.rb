@@ -1,9 +1,8 @@
 module ChineseCheckers
   class Piece
-    attr_accessor :color, :space
+    attr_accessor :color
 
-    def initialize(color: nil, space: nil)
-      @space = space
+    def initialize(color:)
       @color = color
     end
   end
