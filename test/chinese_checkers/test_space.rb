@@ -45,6 +45,14 @@ module ChineseCheckers
       assert_equal nil, space.piece
     end
 
+    def test_has_piece_is_false_when_it_does_not_have_a_piece
+      refute Space.new(x: 4, y: 7).has_a_piece?, "has_a_piece? is true when it does not have a piece."
+    end
+
+    def test_has_piece_is_true_when_it_does_not_have_a_piece
+      assert Space.new(x: 4, y: 7, piece: Object.new).has_a_piece?, "has_a_piece? is false when it has a piece."
+    end
+
     def test_it_is_available_when_it_has_no_piece
       assert Space.new(x: 4, y: 7).available?, "available? is false when it has no piece"
     end

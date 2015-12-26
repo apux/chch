@@ -14,13 +14,15 @@ module ChineseCheckers
     end
 
     def remove_piece
-      aux = @piece
-      @piece = nil
-      aux
+      @piece.tap { @piece = nil }
+    end
+
+    def has_a_piece?
+      !!@piece
     end
 
     def available?
-      !@piece
+      !has_a_piece?
     end
 
     def left?(other_space)
