@@ -32,7 +32,7 @@ module ChineseCheckers
     end
 
     def test_perform_moves_the_piece_if_validator_aproves_it
-      from = Space.new(x: 3, y: 2, piece: Minitest::Mock.new)
+      from = Space.new(x: 3, y: 2, piece: Object.new)
       to = Space.new(x: 9, y: 2)
       left_move = Move.new(
         from:       from,
