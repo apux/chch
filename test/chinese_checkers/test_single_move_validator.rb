@@ -22,28 +22,46 @@ module ChineseCheckers
       adjacent_values.each do |a, b|
         to = available_space(a, b)
 
-        validator = SingleMoveValidator.new(from: from, to: to)
+        validator = SingleMoveValidator.new
 
-        assert validator.valid?, "It is not valid when from has a piece, to is available and spaces are adjacent."
+        assert validator.valid?(from: from, to: to), "It is not valid when from has a piece, to is available and spaces are adjacent."
       end
+    end
+
+    def test_it_is_not_valid_if_from_is_nil
+      from = nil
+      to = available_space(10, 4)
+
+      validator = SingleMoveValidator.new
+
+      refute validator.valid?(from: from, to: to), "It is valid when from is nil."
     end
 
     def test_it_is_not_valid_if_from_does_not_have_a_piece
       from = available_space(9, 3)
       to = available_space(10, 4)
 
-      validator = SingleMoveValidator.new(from: from, to: to)
+      validator = SingleMoveValidator.new
 
-      refute validator.valid?, "It is valid when from does not have a piece."
+      refute validator.valid?(from: from, to: to), "It is valid when from does not have a piece."
+    end
+
+    def test_it_is_not_valid_if_to_is_nil
+      from = space_with_piece(9, 3)
+      to = nil
+
+      validator = SingleMoveValidator.new
+
+      refute validator.valid?(from: from, to: to), "It is valid when to is nil."
     end
 
     def test_it_is_not_valid_if_to_is_not_available
       from = space_with_piece(9, 3)
       to = space_with_piece(10, 4)
 
-      validator = SingleMoveValidator.new(from: from, to: to)
+      validator = SingleMoveValidator.new
 
-      refute validator.valid?, "It is valid when to is not available."
+      refute validator.valid?(from: from, to: to), "It is valid when to is not available."
     end
 
     def test_it_is_not_valid_if_spaces_are_not_adjacent
@@ -62,20 +80,20 @@ module ChineseCheckers
       adjacent_values.each do |a, b|
         to = available_space(a, b)
 
-        validator = SingleMoveValidator.new(from: from, to: to)
+        validator = SingleMoveValidator.new
 
-        refute validator.valid?, "It is valid when spaces are not adjacent."
+        refute validator.valid?(from: from, to: to), "It is valid when spaces are not adjacent."
       end
     end
 
   private
 
     def space_with_piece(x, y)
-      Struct.new(:piece, :available?, :x, :y).new("a piece", false, x, y)
+      Struct.new(:has_a_piece?, :available?, :x, :y).new(true, false, x, y)
     end
 
     def available_space(x, y)
-      Struct.new(:piece, :available?, :x, :y).new(nil, true, x, y)
+      Struct.new(:has_a_piece?, :available?, :x, :y).new(false, true, x, y)
     end
   end
 end

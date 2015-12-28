@@ -7,18 +7,18 @@ module ChineseCheckers
     end
 
     def perform
-      valid? ? move_piece : false
+      if @validator.valid?(from: @from, to: @to)
+        move_piece
+        true
+      else
+        false
+      end
     end
 
   private
 
-    def valid?
-      @validator.valid?(@from, @to)
-    end
-
     def move_piece
       @to.put @from.remove_piece
-      true
     end
   end
 end

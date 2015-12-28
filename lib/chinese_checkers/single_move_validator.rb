@@ -1,18 +1,17 @@
 module ChineseCheckers
 
   class SingleMoveValidator
-    attr_reader :from, :to
-
-    def initialize(from:, to:)
+    def valid?(from:, to:)
       @from = from
       @to = to
-    end
+      return false if from.nil? or to.nil?
 
-    def valid?
-      from.piece and to.available? and adjacent?
+      from.has_a_piece? and to.available? and adjacent?
     end
 
   private
+
+    attr_reader :from, :to
 
     def adjacent?
       same_y? && two_spaces_from_x? or one_space_from_y? && one_space_from_x?
