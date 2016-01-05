@@ -8,12 +8,12 @@ module ChineseCheckers
 
     class PermissiveValidator
       attr_reader :from, :to
-      def valid?(from:, to:); true; end
+      def valid?(_); true; end
     end
 
     class StrictValidator
       attr_reader :from, :to
-      def valid?(from:, to:); false; end
+      def valid?(_); false; end
     end
 
     def setup

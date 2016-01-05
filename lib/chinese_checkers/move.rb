@@ -1,5 +1,8 @@
 module ChineseCheckers
+
   class Move
+    attr_reader :from, :to
+
     def initialize(from:, to:, validator:)
       @from      = from
       @to        = to
@@ -7,7 +10,7 @@ module ChineseCheckers
     end
 
     def perform
-      if @validator.valid?(from: @from, to: @to)
+      if @validator.valid?(self)
         move_piece
         true
       else
@@ -21,4 +24,5 @@ module ChineseCheckers
       @to.put @from.remove_piece
     end
   end
+
 end
