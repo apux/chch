@@ -18,6 +18,10 @@ module ChineseCheckers
       end
     end
 
+    def piece_color
+      @from.piece.color if @from.piece
+    end
+
   private
 
     def move_piece
