@@ -14,7 +14,12 @@ module ChineseCheckers
     attr_reader :move
 
     def jump_a_space?
-      jump_left? || jump_right? || jump_bottom_left? || jump_bottom_right? || jump_top_left? || jump_top_right?
+      jump_left? ||
+        jump_right? ||
+        jump_bottom_left? ||
+        jump_bottom_right? ||
+        jump_top_left? ||
+        jump_top_right?
     end
 
     def jump_left?

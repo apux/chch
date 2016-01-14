@@ -3,7 +3,7 @@ require 'chinese_checkers/jump_move_strategy'
 
 module ChineseCheckers
 
-  class TestSingleMoveStrategy < Minitest::Test
+  class TestJumpMoveStrategy < Minitest::Test
     def test_it_is_valid_if_from_is_four_spaces_to_the_left_and_has_a_piece_in_the_middle
       board = Minitest::Mock.new
       board.expect :at, space_with_piece(0, 0), [11, 3]
