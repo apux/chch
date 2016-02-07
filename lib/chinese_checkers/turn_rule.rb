@@ -9,10 +9,6 @@ module ChineseCheckers
     end
 
     def valid?(move)
-      player_turn? and (first_move? or previous_move_was_a_jump?)
-    end
-
-    def player_turn?
       move.piece_color == @player
     end
   end
